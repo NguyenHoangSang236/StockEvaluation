@@ -1,0 +1,7 @@
+* Chỉ số trong chart:
+c: Close
+o: Open
+h: high
+l: Low
+v: Volume
+t: Time (unix timestamp)
