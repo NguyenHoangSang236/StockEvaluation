@@ -1,12 +1,11 @@
-package com.stock_trading.evaluation.services;
+package com.stock_trading.evaluation.services.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stock_trading.evaluation.network.StockWebSocketClient;
+import com.stock_trading.evaluation.utils.network.StockWebSocketClient;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -17,7 +16,7 @@ import java.util.Map;
 @Component
 @AllArgsConstructor
 @NoArgsConstructor
-public class DataCrawlingService {
+public class RealtimeStockDataService {
     @Autowired
     StockWebSocketClient client;
 

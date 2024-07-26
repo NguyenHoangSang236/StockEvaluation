@@ -1,4 +1,4 @@
-package com.stock_trading.evaluation.network;
+package com.stock_trading.evaluation.utils.network;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.handshake.ServerHandshake;
