@@ -57,14 +57,14 @@ public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryU
 
                 for(int i = 0; i < timeList.size(); i++) {
                     stockHistoryList.add(
-                            StockHistory.builder()
-                                    .time(valueParsingUtil.convertFromSecondsToDate(timeList.get(i)))
-                                    .open(openList.get(i))
-                                    .close(closeList.get(i))
-                                    .high(highList.get(i))
-                                    .low(lowList.get(i))
-                                    .volume(volumeList.get(i))
-                                    .build()
+                            new StockHistory(
+                                    valueParsingUtil.convertFromSecondsToDate(timeList.get(i)),
+                                    openList.get(i),
+                                    closeList.get(i),
+                                    lowList.get(i),
+                                    highList.get(i),
+                                    volumeList.get(i)
+                            )
                     );
                 }
 
