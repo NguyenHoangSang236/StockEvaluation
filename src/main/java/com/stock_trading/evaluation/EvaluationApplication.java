@@ -13,8 +13,8 @@ public class EvaluationApplication {
 	public static void main(String[] args) throws InterruptedException, URISyntaxException {
 		SpringApplication.run(EvaluationApplication.class, args);
 
-		RealtimeStockDataService crawler = new RealtimeStockDataService();
-		crawler.connectToStockRealtimeByListV2("FPT", "PNJ");
+//		RealtimeStockDataService crawler = new RealtimeStockDataService();
+//		crawler.connectToStockRealtimeByListV2("FPT", "PNJ");
 	}
 
 }

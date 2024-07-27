@@ -13,6 +13,11 @@ public class ValueParsingUtil {
     }
 
 
+    public Date convertFromSecondsToDate(int second) {
+        return new Date(second * 1000L);
+    }
+
+
     public long convertFromDateToSeconds(Date date) {
         return date.getTime() / 1000;
     }
