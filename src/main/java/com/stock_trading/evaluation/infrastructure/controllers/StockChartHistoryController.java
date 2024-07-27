@@ -1,6 +1,5 @@
 package com.stock_trading.evaluation.infrastructure.controllers;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stock_trading.evaluation.core.UseCaseExecutor;
 import com.stock_trading.evaluation.entities.api.ApiResponse;
 import com.stock_trading.evaluation.entities.api.StockHistoryRequest;
@@ -9,12 +8,13 @@ import com.stock_trading.evaluation.usecases.stock_history.ViewStockChartHistory
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.CompletableFuture;
 
 @RestController

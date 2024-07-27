@@ -1,7 +1,6 @@
 package com.stock_trading.evaluation.services.data;
 
 import com.stock_trading.evaluation.entities.api.ApiResponse;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

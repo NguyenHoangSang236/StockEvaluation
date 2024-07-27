@@ -21,7 +21,7 @@ public class RealtimeStockDataService {
     StockWebSocketClient client;
 
     public void connectToStockRealtimeByListV2(String... stockCode) throws URISyntaxException {
-        try{
+        try {
             ObjectMapper objectMapper = new ObjectMapper();
 
             Map<String, Object> map = new HashMap<>();
@@ -33,8 +33,7 @@ public class RealtimeStockDataService {
             client = new StockWebSocketClient(new URI("wss://iboard-pushstream.ssi.com.vn/realtime"));
             client.connectBlocking();
             client.send(objectMapper.writeValueAsString(map));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

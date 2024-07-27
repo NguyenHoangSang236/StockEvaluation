@@ -1,6 +1,5 @@
 package com.stock_trading.evaluation.usecases.stock_history;
 
-import aj.org.objectweb.asm.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import com.stock_trading.evaluation.core.UseCase;
@@ -20,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 @Component
-public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryUseCase.InputValue, ApiResponse>{
+public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryUseCase.InputValue, ApiResponse> {
     @Autowired
     StockHistoryFeign stockHistoryFeign;
 
@@ -44,7 +43,7 @@ public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryU
 
             ResponseEntity<ApiResponse> response = stockHistoryFeign.stockChartHistory(requestBodyMap);
 
-            if(response.getStatusCode() == HttpStatusCode.valueOf(200)) {
+            if (response.getStatusCode() == HttpStatusCode.valueOf(200)) {
                 ApiResponse apiResponse = objectMapper.convertValue(response.getBody(), ApiResponse.class);
                 Map map = objectMapper.convertValue(apiResponse.getData(), Map.class);
 
@@ -55,7 +54,7 @@ public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryU
                 List<Double> lowList = objectMapper.convertValue(map.get("l"), typeFactory.constructCollectionType(List.class, Double.class));
                 List<Long> volumeList = objectMapper.convertValue(map.get("v"), typeFactory.constructCollectionType(List.class, Long.class));
 
-                for(int i = 0; i < timeList.size(); i++) {
+                for (int i = 0; i < timeList.size(); i++) {
                     stockHistoryList.add(
                             new StockHistory(
                                     valueParsingUtil.convertFromSecondsToDate(timeList.get(i)),
@@ -71,12 +70,10 @@ public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryU
                 apiResponse.setData(stockHistoryList);
 
                 return apiResponse;
-            }
-            else {
+            } else {
                 return response.getBody();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
 
             return ApiResponse.builder()

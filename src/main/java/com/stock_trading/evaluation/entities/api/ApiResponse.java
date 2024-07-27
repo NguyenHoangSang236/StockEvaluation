@@ -2,7 +2,6 @@ package com.stock_trading.evaluation.entities.api;
 
 import com.stock_trading.evaluation.core.UseCase;
 import lombok.*;
-import org.springframework.http.HttpStatus;
 
 @Builder
 @Getter
