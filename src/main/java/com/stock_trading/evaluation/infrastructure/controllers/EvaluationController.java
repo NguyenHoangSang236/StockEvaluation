@@ -3,7 +3,9 @@ package com.stock_trading.evaluation.infrastructure.controllers;
 import com.stock_trading.evaluation.core.UseCaseExecutor;
 import com.stock_trading.evaluation.entities.api.ApiResponse;
 import com.stock_trading.evaluation.entities.api.StockHistoryRequest;
+import com.stock_trading.evaluation.entities.api.StockSymbolEvaluationRequest;
 import com.stock_trading.evaluation.services.data.ResponseMapper;
+import com.stock_trading.evaluation.usecases.evaluation.EvaluateStockSymbolUseCase;
 import com.stock_trading.evaluation.usecases.stock_history.ViewStockChartHistoryUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -18,12 +20,11 @@ import java.text.SimpleDateFormat;
 import java.util.concurrent.CompletableFuture;
 
 @RestController
-@RequestMapping(value = "/stockHistory", consumes = {"*/*"}, produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(value = "/evaluation", consumes = {"*/*"}, produces = {MediaType.APPLICATION_JSON_VALUE})
 @RequiredArgsConstructor
-public class StockChartHistoryController {
+public class EvaluationController {
     final UseCaseExecutor executor;
-    final ViewStockChartHistoryUseCase viewStockChartHistoryUseCase;
-
+    final EvaluateStockSymbolUseCase evaluateStockSymbolUseCase;
 
     @GetMapping("/chartData")
     public CompletableFuture<ResponseEntity<ApiResponse>> getChartData(
@@ -33,15 +34,15 @@ public class StockChartHistoryController {
     ) throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-        StockHistoryRequest request = StockHistoryRequest.builder()
+        StockSymbolEvaluationRequest request = StockSymbolEvaluationRequest.builder()
                 .fromDate(dateFormat.parse(fromDate))
                 .toDate(dateFormat.parse(toDate))
                 .symbol(symbol)
                 .build();
 
         return executor.execute(
-                viewStockChartHistoryUseCase,
-                new ViewStockChartHistoryUseCase.InputValue(request),
+                evaluateStockSymbolUseCase,
+                new EvaluateStockSymbolUseCase.InputValue(request),
                 ResponseMapper::map
         );
     }

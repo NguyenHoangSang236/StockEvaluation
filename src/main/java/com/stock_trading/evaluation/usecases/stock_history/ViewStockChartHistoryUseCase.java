@@ -9,6 +9,7 @@ import com.stock_trading.evaluation.entities.dto.StockHistory;
 import com.stock_trading.evaluation.infrastructure.feign.StockHistoryFeign;
 import com.stock_trading.evaluation.utils.common.ValueParsingUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -45,6 +46,7 @@ public class ViewStockChartHistoryUseCase extends UseCase<ViewStockChartHistoryU
 
             if (response.getStatusCode() == HttpStatusCode.valueOf(200)) {
                 ApiResponse apiResponse = objectMapper.convertValue(response.getBody(), ApiResponse.class);
+                apiResponse.setStatus(HttpStatus.OK.name());
                 Map map = objectMapper.convertValue(apiResponse.getData(), Map.class);
 
                 List<Long> timeList = objectMapper.convertValue(map.get("t"), typeFactory.constructCollectionType(List.class, Long.class));

@@ -10,7 +10,7 @@ public class ResponseMapper {
         String code = response.getCode();
 
         return switch (code) {
-            case "OK" -> ResponseEntity.ok(response);
+            case "SUCCESS" -> ResponseEntity.ok(response);
 //            case "INTERNAL_SERVER_ERROR" -> ResponseEntity.internalServerError().body(response);
 //            case "BAD_REQUEST" -> ResponseEntity.badRequest().body(response);
 //            case "UNAUTHORIZED", "NO_CONTENT" -> new ResponseEntity<>(response, status);

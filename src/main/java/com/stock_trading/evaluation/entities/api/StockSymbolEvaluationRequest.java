@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class StockHistoryRequest {
+public class StockSymbolEvaluationRequest {
     @JsonProperty(value = "from_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     Date fromDate;
